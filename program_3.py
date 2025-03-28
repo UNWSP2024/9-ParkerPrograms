@@ -1,19 +1,45 @@
+# Nathan Parker
+# 03/28/25
 # Program #3: Average Numbers
-# Assume a file containing a series of integers is named numbers.txt and exists on the computer's disk.
-# (please use the provided numbers.txt)
-# Write a program that reads all of the numbers stored in the file and calculates their total.  
 
-# The program should handle the following exceptions: 
+# define the main function
+def main():
 
-# It should handle any IOError exceptions that are raised.
-# It should handle any ValueError exceptions that are raised when the items that are read from the file 
-# are converted to a number.
-def sum_numbers_from_file():
-    ######################
-    # Add your code here #
-    ######################
-    print('In the sum_numbers_from_file function')
+    # perform the following code if it does not raise an exception
+    try:
+        # set the accumulator to 0
+        accumulator = 0
 
-# You don't need to change anything below this line:
+        # open numbers.txt
+        nums = open('numbers.txt', 'r')
+
+        # loop over the numbers in the file
+        for num in nums:
+
+            # convert the numbers to integers
+            int_num = int(num)
+
+            # display the numbers
+            print(int_num)
+
+            # add the numbers
+            accumulator += int_num
+
+        # close the file
+        nums.close()
+
+        # display the sum of the numbers
+        print(f'The sum of the numbers is {accumulator}.')
+
+    # catch errors
+    except IOError:
+        print('An error occured trying to read the file.')
+    except ValueError:
+        print('Non-numeric data found in the file.')
+    except:
+        print('An error occured.')
+
+# call the main function
 if __name__ == '__main__':
-    sum_numbers_from_file()
+    main()
+
